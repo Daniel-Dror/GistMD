@@ -47,7 +47,7 @@ const SingleCard = styled.div`
     max-height: 200px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 800px) {
     width: 70vw;
   }
 `;

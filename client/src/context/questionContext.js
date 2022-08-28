@@ -74,7 +74,7 @@ export const QuestionProvider = ({ children }) => {
         setIsLoading(false);
         console.log(error);
       });
-  }, []);
+  }, [backHome]);
 
   //nadle the change on the create-select text input
   const handleChange = (newValue, actionMeta) => {
