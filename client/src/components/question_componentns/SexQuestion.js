@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import questionContext from "../../context/questionContext";
-
+import { motion } from "framer-motion";
+//RETURNS the sex question
 const SexQuestion = () => {
+  //CONTEXT variables, STATES and FUNCTIONS
   const { postSex, setPostSex } = useContext(questionContext);
-
+  //RETURNS sex question
   return (
-    <StyledRadio>
+    <StyledRadio
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <label htmlFor="Male">
         <input
           type="radio"
@@ -31,7 +37,7 @@ const SexQuestion = () => {
   );
 };
 
-const StyledRadio = styled.div`
+const StyledRadio = styled(motion.div)`
   display: flex;
   justify-content: center;
   gap: 4rem;

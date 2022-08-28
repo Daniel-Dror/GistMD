@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
+//Imports
+import React from "react";
 import styled from "styled-components";
 import ListOfCards from "../components/ListOfCards";
-import questionContext from "../context/questionContext";
+import { motion } from "framer-motion";
 
+//retrns the list of cards
 const Home = () => {
   return (
     <StyledHome>

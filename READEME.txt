@@ -1,0 +1,5 @@
+hey! welcome to my project!
+
+first, go to the db.js file and use the info there to configure your postgres DB on your pc,
+then go to database.sql and copy all the queries to the shell, after you finish that, cd into the server and client folder and type "npm start"
+for each of them in a different terminal, adn you are good to go and add new patients!!!

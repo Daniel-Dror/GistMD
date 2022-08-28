@@ -2,13 +2,18 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import questionContext from "../../context/questionContext";
+import { motion } from "framer-motion";
 //RETURNS the age question
 const AgeQuestion = () => {
-  //CONTEXT variables,
+  //CONTEXT variables, STATES and FUNCTIONS
   const { postAgeGroup, setPostAgeGroup } = useContext(questionContext);
 
   return (
-    <StyledRadio>
+    <StyledRadio
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <label>
         <input
           type="radio"
@@ -57,7 +62,7 @@ const AgeQuestion = () => {
   );
 };
 
-const StyledRadio = styled.div`
+const StyledRadio = styled(motion.div)`
   display: flex;
   justify-content: center;
   gap: 4rem;

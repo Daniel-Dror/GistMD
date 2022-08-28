@@ -1,3 +1,10 @@
+-- after configuring the postgres DB server, we will set up the DB and his tabkes
+-- type: \c gistmd
+-- then copy paste all the queries below
+-- make sure all the tables exists and you are good to go!
+
+
+
 CREATE TABLE language (
 uid uuid PRIMARY KEY NOT NULL,
 name VARCHAR(100) NOT NULL
@@ -40,28 +47,7 @@ INSERT INTO language VALUES (uuid_generate_v4(), 'Hindi');
 INSERT INTO language VALUES (uuid_generate_v4(), 'Bengali');
 INSERT INTO language VALUES (uuid_generate_v4(), 'Portuguese');
 
-ALTER TABLE language 
-RENAME COLUMN language_name TO name;
-
-ALTER TABLE language 
-RENAME COLUMN language_uid TO uid;
-
-ALTER TABLE surgery 
-RENAME COLUMN surgery_name TO name;
-
-ALTER TABLE surgery 
-RENAME COLUMN surgery_uid TO uid;
-
-
-ALTER TABLE patient 
-RENAME COLUMN patient_name TO name;
-
-ALTER TABLE patient 
-RENAME COLUMN patient_uid TO uid;
-
-ALTER TABLE question
-ADD COLUMN new_column_name data_type constraint;
-
-
-
-SELECT patient.uid, patient.age, patient.sex, surgery.name as surgery, language.name as language FROM patient INNER JOIN surgery ON patient.surgery_uid=surgery.uid INNER JOIN language ON patient.language_uid=language.uid;
+INSERT INTO question VALUES (uuid_generate_v4(), 'Age', 'Please choose the patient age group.');
+INSERT INTO question VALUES (uuid_generate_v4(), 'Sex', 'Please choose the patient Sex.');
+INSERT INTO question VALUES (uuid_generate_v4(), 'Language', 'Please select the patient native language.');
+INSERT INTO question VALUES (uuid_generate_v4(), 'Surgery', 'Please select the patient upcoming surgery.');

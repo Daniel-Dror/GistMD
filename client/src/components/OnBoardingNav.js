@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+//Imports
+import React, { useContext } from "react";
 import styled from "styled-components";
 import questionContext from "../context/questionContext";
 
+//RETURNS the navigation bar for the onboarding procces
 const OnBoardingNav = () => {
+  //CONTEXT
   const { questionList, questionIndex, setQuestionIndex } =
     useContext(questionContext);
 

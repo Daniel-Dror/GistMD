@@ -1,14 +1,16 @@
-import React, { useState, useContext, Fragment, useEffect } from "react";
-import { Routes } from "react-router-dom";
+//Imports
+import React, { useState, useContext, useEffect } from "react";
 import questionContext from "../context/questionContext";
-
 import styled from "styled-components";
 import AgeQuestion from "./question_componentns/AgeQuestion";
 import SexQuestion from "./question_componentns/SexQuestion";
 import LanguageQuestion from "./question_componentns/LanguageQuestion";
 import SurgeryQuestion from "./question_componentns/SurgeryQuestion";
+import { motion } from "framer-motion";
 
+//this component includes navigation to all the question managed by the navbar
 const QuestionArea = () => {
+  //CONTEXT
   const {
     questionIndex,
     setQuestionIndex,
@@ -17,8 +19,10 @@ const QuestionArea = () => {
     submitHandler,
   } = useContext(questionContext);
 
+  //SUBMIT button flag
   const [disableSubmit, setDisableSubmit] = useState(false);
 
+  //handle visibility to the submit button(visible/invisivible)
   useEffect(() => {
     checkSubmit();
   }, [submitNewPatient]);
@@ -37,6 +41,7 @@ const QuestionArea = () => {
     }
   };
 
+  //returns one question compomemt managed by a self invoking function and the buttons
   return (
     <StyledQuestionArea>
       <h3>{questionList[questionIndex]?.value}</h3>

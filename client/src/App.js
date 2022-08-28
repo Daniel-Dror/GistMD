@@ -1,3 +1,4 @@
+//Imports
 import GlobalStyle from "./components/GlobalStyle";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
@@ -5,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddNewPatient from "./pages/AddNewPatient";
 import { QuestionProvider } from "./context/questionContext";
 
+//returns all the main components globalstyle context and routing
 function App() {
   return (
     <div className="App">

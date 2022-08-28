@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+//Imports
+import React from "react";
 import styled from "styled-components";
 
 const Card = ({ card }) => {
+  //RETURNS a card of a single patient
   return (
     <SingleCard>
       <div>

@@ -1,6 +1,7 @@
 //-----IMPORTS-----
 //React
-import React from "react";
+import React, { useContext } from "react";
+import questionContext from "../context/questionContext";
 //Styled-Components
 import styled from "styled-components";
 //Images
@@ -9,13 +10,9 @@ import gistmdFooter1 from "../img/gistmdFooter1.png";
 import { Router, useNavigate } from "react-router-dom";
 
 const Nav = () => {
-  let navigate = useNavigate();
-  const backHome = () => {
-    let path = `/`;
-
-    navigate(path);
-  };
-
+  //Context
+  const { backHome } = useContext(questionContext);
+  //RETURNS the nav with a logo linked to the home page.
   return (
     <StyledNav>
       <Ul>
@@ -48,7 +45,6 @@ const Logo = styled.img`
   height: 80%;
   width: 100px;
 
-  /* border-right: solid 0.5rem papayawhip; */
   &:hover {
     scale: 1.2;
     cursor: pointer;

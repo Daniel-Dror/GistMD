@@ -1,10 +1,14 @@
+//Imports
+
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { Router, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+//create context
 const questionContext = createContext(null);
 
+//context provider
 export const QuestionProvider = ({ children }) => {
+  //states
   const [surgeryList, setSurgeryList] = useState([]);
   const [languageList, setLanguageList] = useState([]);
   const [ageGroupList, setAgeGroupList] = useState(null);
@@ -16,17 +20,23 @@ export const QuestionProvider = ({ children }) => {
   const [postLanguage, setPostLanguage] = useState(null);
   const [postAgeGroup, setPostAgeGroup] = useState(null);
   const [postSex, setPostSex] = useState(null);
+
+  //object of the new patient
   let submitNewPatient = {
     postAgeGroup,
     postSex,
     postSurgery,
     postLanguage,
   };
+
+  //navigate to home page with list of patients
   let navigate = useNavigate();
   const backHome = () => {
     let path = `/`;
     navigate(path);
   };
+
+  //handle the submit of new patient, post it to the backend and go to home page
   const submitHandler = () => {
     console.log(submitNewPatient);
     axios
@@ -48,6 +58,7 @@ export const QuestionProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
+    //GET data from backend before starting the onboarding proccess
     axios
       .get("http://localhost:4000/addpatient")
       .then((res) => {
@@ -65,6 +76,7 @@ export const QuestionProvider = ({ children }) => {
       });
   }, []);
 
+  //nadle the change on the create-select text input
   const handleChange = (newValue, actionMeta) => {
     if (questionIndex === 2) {
       setPostLanguage(newValue);
@@ -75,6 +87,8 @@ export const QuestionProvider = ({ children }) => {
       console.log(postSurgery);
     }
   };
+
+  //creating an from language and surgeries
   const arrayOflanguagesString = languageList.map((x) => {
     return { label: x.name, value: x.uid };
   });
@@ -82,6 +96,7 @@ export const QuestionProvider = ({ children }) => {
     return { label: x.name, value: x.uid };
   });
 
+  //initialize the values for the  new patient object
   const newPatientInitialize = () => {
     setPostSurgery(null);
     setPostLanguage(null);
@@ -89,6 +104,7 @@ export const QuestionProvider = ({ children }) => {
     setPostSex(null);
   };
 
+  //CONTEXT PROVIDER
   return (
     <questionContext.Provider
       value={{
@@ -114,6 +130,7 @@ export const QuestionProvider = ({ children }) => {
         arrayOflanguagesString,
         arrayOfSurgeriesString,
         newPatientInitialize,
+        backHome,
       }}
     >
       {children}
